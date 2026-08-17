@@ -1,0 +1,6 @@
+{
+  "name": "Analisador SOC de Phishing",
+  "description": "Ferramenta de análise educativa de engenharia social e phishing por Analista SOC.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
