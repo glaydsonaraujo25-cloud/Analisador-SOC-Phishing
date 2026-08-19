@@ -1,4 +1,4 @@
-export type MessageType = 
+export type MessageType =
   | "E-mail"
   | "SMS / Smishing"
   | "WhatsApp / Mensagem Instantânea"
@@ -9,6 +9,10 @@ export type MessageType =
   | "Outro";
 
 export type RiskLevel = "Baixo" | "Médio" | "Alto" | "Muito Alto";
+
+export interface EvidenceItem { title: string; detail: string; confidence: number; }
+export interface IOC { type: string; value: string; }
+export interface MitreTechnique { id: string; name: string; }
 
 export interface AnalysisRequest {
   message: string;
@@ -23,6 +27,15 @@ export interface AnalysisResponse {
   riskLevel: RiskLevel;
   riskEmoji: string;
   timestamp: string;
+  riskScore?: number;
+  confidence?: number;
+  caseId?: string;
+  incidentType?: string;
+  attackObjective?: string;
+  recommendedAction?: string;
+  evidence?: EvidenceItem[];
+  iocs?: IOC[];
+  mitre?: MitreTechnique[];
   error?: string;
 }
 
