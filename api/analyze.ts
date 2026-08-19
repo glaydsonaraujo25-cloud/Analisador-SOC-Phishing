@@ -55,8 +55,11 @@ Não invente IOCs, técnicas ou MITRE sem evidência. Use T1566.002 para link, T
     }
     parts.push({ text: `Tipo: ${type}\nRemetente: ${senderInfo || 'Não informado'}\nMensagem:\n${message || '[Imagem anexada]'}` });
 
+    // Gemini 2.5 Flash is no longer available to new users. Keep the model
+    // configurable so a future model change only requires an environment update.
+    const model = process.env.GEMINI_MODEL || 'gemini-3.6-flash';
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model,
       contents: { parts },
       config: { systemInstruction, temperature: 0.1, responseMimeType: 'application/json' }
     });
